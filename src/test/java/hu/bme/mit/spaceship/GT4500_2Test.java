@@ -1,6 +1,8 @@
 package hu.bme.mit.spaceship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -157,5 +159,14 @@ public class GT4500_2Test {
     assertEquals(false, result);
     verify(primary, times(1)).fire(1);
     verify(secondary, times(1)).fire(1);
+  }
+
+  @Test
+  public void fireTorpedo_InvalidMode_Fail(){
+    // Arrange
+
+    // Act
+    assertThrowsExactly(IllegalStateException.class, () -> ship.fireTorpedo(FiringMode.NEW_MODE));
+    // Assert
   }
 }
