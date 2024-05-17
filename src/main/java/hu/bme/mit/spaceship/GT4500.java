@@ -85,6 +85,9 @@ public class GT4500 implements SpaceShip {
         firingSuccess = primaryTorpedoStore.fire(1);
         firingSuccess = secondaryTorpedoStore.fire(1) || firingSuccess;
         break;
+
+      default:
+        throw new IllegalStateException("Unknown firing mode: "+ firingMode);
     }
 
     return firingSuccess;
